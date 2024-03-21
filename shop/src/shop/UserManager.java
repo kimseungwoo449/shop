@@ -70,6 +70,8 @@ public class UserManager {
 		return null;
 	}
 
+	
+	
 	// Read User
 	public void readMyInformation() {
 		if (!isPossible()) {
