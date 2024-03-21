@@ -34,8 +34,20 @@ public class UserManager {
 		return number;
 	}
 	
+	private boolean isPossible() {
+		if(Shop.log==-1)
+			return false;
+		else
+			return true;
+	}
+	
 	// Create User
 	public void createUser() {
+		if(isPossible()) {
+			System.err.println("로그아웃 후 이용가능합니다.");
+			return;
+		}
+			
 		String id = inputString("ID");
 		String password = inputString("PASSWORD");
 		
@@ -56,4 +68,7 @@ public class UserManager {
 		}
 		return null;
 	}
+	
+	// Read User
+	
 }
