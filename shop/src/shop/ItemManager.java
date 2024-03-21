@@ -46,14 +46,12 @@ public class ItemManager {
 			return;
 		}
 		
-		String itemName = Shop.inputString("품목 이름");
-		int index = findItemIndexByName(itemName);
+		printItems();
+		Item item = findItemByName();
 		
-		if(index==-1) {
-			System.err.println("찾으시는 품목이 존재하지 않습니다.");
+		if(item==null)
 			return;
-		}
-		Item item = items.get(index);
+		
 		System.out.println(item);
 		int price = Shop.inputNumber("수정할 가격");
 		
@@ -64,5 +62,38 @@ public class ItemManager {
 		
 		item.setPrice(price);
 		System.out.println("품목 수정 완료.");
+	}
+	
+	private Item findItemByName() {
+		String itemName = Shop.inputString("품목 이름");
+		int index = findItemIndexByName(itemName);
+		
+		if(index==-1) {
+			System.err.println("찾으시는 품목이 존재하지 않습니다.");
+			return null;
+		}
+		return items.get(index);
+	}
+
+	// delete item
+	public void deleteItem() {
+		if(items.size()==0) {
+			System.err.println("상품 추가 후 이용가능합니다.");
+			return;
+		}
+		
+		printItems();
+		Item item = findItemByName();
+		
+		if(item==null)
+			return;
+		
+		items.remove(item);
+		System.out.println("품목 삭제 완료.");
+	}
+	
+	private void printItems() {
+		for(Item item : items)
+			System.out.println(item);
 	}
 }

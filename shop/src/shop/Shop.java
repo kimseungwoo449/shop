@@ -83,8 +83,8 @@ public class Shop {
 		} else {
 			if(choice==ENROLL_ITEM)
 				enrollItem();
-//			else if(choice==DELETE_ITEM)
-//				deleteItem();
+			else if(choice==DELETE_ITEM)
+				deleteItem();
 			else if(choice==MODIFY_ITEM)
 				modifyItem();
 //			else if(choice==SHOW_TOTAL)
@@ -114,6 +114,10 @@ public class Shop {
 	
 	private void enrollItem() {
 		itemManager.enrollItem();
+	}
+	
+	private void deleteItem() {
+		itemManager.deleteItem();
 	}
 	
 	private void modifyItem() {
