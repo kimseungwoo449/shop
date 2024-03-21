@@ -132,4 +132,14 @@ public class UserManager {
 		Shop.log = index;
 		System.out.println("로그인 성공.");
 	}
+	
+	// logout
+	public void logout() {
+		if (!isPossible()) {
+			System.err.println("로그인 후 이용가능합니다.");
+			return;
+		}
+		Shop.log = -1;
+		System.out.println("로그아웃 성공.");
+	}
 }
