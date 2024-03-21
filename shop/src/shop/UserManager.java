@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class UserManager {
 	private ArrayList<User> users;
 	private static UserManager instance = new UserManager();
-	private Scanner sc = new Scanner(System.in);
+
 
 	private UserManager() {
 		users = new ArrayList<User>();
@@ -16,22 +16,6 @@ public class UserManager {
 
 	public static UserManager getInstance() {
 		return instance;
-	}
-
-	private String inputString(String message) {
-		System.out.print(message + " : ");
-		return sc.next();
-	}
-
-	private int inputNumber(String message) {
-		int number = -1;
-		try {
-			String input = sc.next();
-			number = Integer.parseInt(input);
-		} catch (Exception e) {
-			System.err.println("숫자로 입력가능합니다.");
-		}
-		return number;
 	}
 
 	private boolean isPossible() {
@@ -48,8 +32,8 @@ public class UserManager {
 			return;
 		}
 
-		String id = inputString("ID");
-		String password = inputString("PASSWORD");
+		String id = Shop.inputString("ID");
+		String password = Shop.inputString("PASSWORD");
 
 		if (findUserIndexById(id) != -1) {
 			System.err.println("이미 존재하는 ID입니다.");
@@ -87,8 +71,8 @@ public class UserManager {
 	}
 
 	private boolean isMyId(User user) {
-		String id = inputString("ID");
-		String password = inputString("PASSWORD");
+		String id = Shop.inputString("ID");
+		String password = Shop.inputString("PASSWORD");
 
 		if (!user.getId().equals(id) || !user.getPassword().equals(password)) {
 			System.err.println("회원 정보가 일치 하지 않습니다.");
@@ -120,8 +104,8 @@ public class UserManager {
 			return;
 		}
 		
-		String id = inputString("ID");
-		String password = inputString("PASSWORD");
+		String id = Shop.inputString("ID");
+		String password = Shop.inputString("PASSWORD");
 		
 		int index = findUserIndexById(id);
 		if(index==-1||!users.get(index).getPassword().equals(password)) {
@@ -141,5 +125,9 @@ public class UserManager {
 		}
 		Shop.log = -1;
 		System.out.println("로그아웃 성공.");
+	}
+	
+	public String showUserId() {
+		return users.get(Shop.log).getId();
 	}
 }
