@@ -115,6 +115,11 @@ public class UserManager {
 	
 	// login
 	public void login() {
+		if (isPossible()) {
+			System.err.println("로그아웃 후 이용가능합니다.");
+			return;
+		}
+		
 		String id = inputString("ID");
 		String password = inputString("PASSWORD");
 		
