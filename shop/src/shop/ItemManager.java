@@ -38,4 +38,31 @@ public class ItemManager {
 		}
 		return index;
 	}
+	
+	// update item
+	public void updateItem() {
+		if(items.size()==0) {
+			System.err.println("상품 추가 후 이용가능합니다.");
+			return;
+		}
+		
+		String itemName = Shop.inputString("품목 이름");
+		int index = findItemIndexByName(itemName);
+		
+		if(index==-1) {
+			System.err.println("찾으시는 품목이 존재하지 않습니다.");
+			return;
+		}
+		Item item = items.get(index);
+		System.out.println(item);
+		int price = Shop.inputNumber("수정할 가격");
+		
+		if(price<1) {
+			System.err.println("가격은 1원 이상이어야 합니다.");
+			return;
+		}
+		
+		item.setPrice(price);
+		System.out.println("품목 수정 완료.");
+	}
 }
