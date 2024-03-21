@@ -51,25 +51,26 @@ public class UserManager {
 		String id = inputString("ID");
 		String password = inputString("PASSWORD");
 
-		if (findUserById(id) != null) {
+		if (findUserIndexById(id) != -1) {
 			System.err.println("이미 존재하는 ID입니다.");
 			return;
 		}
 
 		User user = new User(id, password);
 		users.add(user);
-		;
+		
 		System.out.printf("회원가입 완료. %s님 안녕하세요\n", id);
 	}
 
-	private User findUserById(String id) {
-		for (User user : users) {
+	private int findUserIndexById(String id) {
+		for (int i =0;i<users.size();i++) {
+			User user = users.get(i);
 			if (user.getId().equals(id))
-				return user;
+				return i;
 		}
-		return null;
+		return -1;
 	}
-	
+
 	// Read User
 	public void readMyInformation() {
 		if (!isPossible()) {
@@ -78,13 +79,13 @@ public class UserManager {
 		}
 
 		User user = users.get(Shop.log);
-		
-		if(!isMyId(user))
+
+		if (!isMyId(user))
 			return;
-		
+
 		System.out.println(user);
 	}
-	
+
 	private boolean isMyId(User user) {
 		String id = inputString("ID");
 		String password = inputString("PASSWORD");
@@ -95,20 +96,35 @@ public class UserManager {
 		}
 		return true;
 	}
-	
+
 	// Delete user
 	public void deleteUser() {
 		if (!isPossible()) {
 			System.err.println("로그인 후 이용가능합니다.");
 			return;
 		}
-		
+
 		User user = users.get(Shop.log);
 
-		if(!isMyId(user))
+		if (!isMyId(user))
 			return;
-		
+
 		users.remove(user);
 		System.out.println("탈퇴 완료.");
+	}
+	
+	// login
+	public void login() {
+		String id = inputString("ID");
+		String password = inputString("PASSWORD");
+		
+		int index = findUserIndexById(id);
+		if(index==-1||!users.get(index).getPassword().equals(password)) {
+			System.err.println("ID 혹은 PASSWORD 재확인");
+			return;
+		}
+		
+		Shop.log = index;
+		System.out.println("로그인 성공.");
 	}
 }
