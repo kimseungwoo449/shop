@@ -27,6 +27,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		return String.format("ID : %s\nPASSWORD : %s\n%s", id, password, myCart);
+		return String.format("ID : %s\nPASSWORD : %s\n=== 장바구니 목록 ===\n%s", id, password, myCart);
 	}
 }
