@@ -1,6 +1,8 @@
 package shop;
 
 public class Item {
+	// test 
+	
 	private String itemName;
 	private int price;
 	private int amount;
@@ -10,7 +12,6 @@ public class Item {
 		this.price = price;
 		this.amount = 0;
 	}
-	
 
 	public String getItemName() {
 		return this.itemName;
