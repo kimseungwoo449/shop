@@ -70,7 +70,6 @@ public class UserManager {
 		return null;
 	}
 	
-	
 	// Read User
 	public void readMyInformation() {
 		if (!isPossible()) {
@@ -79,15 +78,37 @@ public class UserManager {
 		}
 
 		User user = users.get(Shop.log);
-
+		
+		if(!isMyId(user))
+			return;
+		
+		System.out.println(user);
+	}
+	
+	private boolean isMyId(User user) {
 		String id = inputString("ID");
 		String password = inputString("PASSWORD");
 
 		if (!user.getId().equals(id) || !user.getPassword().equals(password)) {
 			System.err.println("회원 정보가 일치 하지 않습니다.");
+			return false;
+		}
+		return true;
+	}
+	
+	// Delete user
+	public void deleteUser() {
+		if (!isPossible()) {
+			System.err.println("로그인 후 이용가능합니다.");
 			return;
 		}
 		
-		System.out.println(user);
+		User user = users.get(Shop.log);
+
+		if(!isMyId(user))
+			return;
+		
+		users.remove(user);
+		System.out.println("탈퇴 완료.");
 	}
 }
