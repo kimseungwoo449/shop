@@ -1,14 +1,11 @@
 package shop;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class UserManager {
 	private ArrayList<User> users;
 	private static UserManager instance = new UserManager();
 
-
-	
 	private UserManager() {
 		users = new ArrayList<User>();
 		User admin = new User("admin", "1111");
