@@ -16,6 +16,7 @@ public class Shop {
 	private final int SHOW_TOTAL = 4;
 
 	private UserManager userManager;
+	private ItemManager itemManager;
 	public static Scanner sc = new Scanner(System.in);
 
 	private String shopName;
@@ -25,6 +26,7 @@ public class Shop {
 		this.shopName = shopName;
 		this.log = -1;
 		this.userManager = UserManager.getInstance();
+		this.itemManager = ItemManager.getInstance();
 	}
 
 	public static String inputString(String message) {
@@ -58,7 +60,7 @@ public class Shop {
 		}
 		if (this.log == 0) {
 			System.out.println("[1] 아이템 등록");
-			System.out.println("[2]	아이템 삭제");
+			System.out.println("[2] 아이템 삭제");
 			System.out.println("[3] 아이템 수정");
 			System.out.println("[4] 총 매출 조회");
 		}
@@ -79,8 +81,8 @@ public class Shop {
 			else if (choice == MY_PAGE)
 				myPage();
 		} else {
-//			if(choice==ENROLL_ITEM)
-//				enrollItem();
+			if(choice==ENROLL_ITEM)
+				enrollItem();
 //			else if(choice==DELETE_ITEM)
 //				deleteItem();
 //			else if(choice==SHOW_TOTAL)
@@ -107,7 +109,11 @@ public class Shop {
 	private void myPage() {
 		userManager.readMyInformation();
 	}
-
+	
+	private void enrollItem() {
+		itemManager.enrollItem();
+	}
+	
 	public void run() {
 		while (true) {
 			printMenu();
