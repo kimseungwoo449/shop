@@ -10,6 +10,7 @@ public class User {
 	public User(String id, String password) {
 		this.id = id;
 		this.password = password;
+		this.myCart = new Cart(this.id);
 	}
 
 	public String getId() {
@@ -22,5 +23,10 @@ public class User {
 
 	public User clone() {
 		return new User(this.id, this.password);
+	}
+
+	@Override
+	public String toString() {
+		return String.format("ID : %s\nPASSWORD : %s\n%s", id, password, myCart);
 	}
 }
