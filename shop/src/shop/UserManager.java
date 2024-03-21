@@ -8,6 +8,7 @@ public class UserManager {
 	private static UserManager instance = new UserManager();
 
 
+	
 	private UserManager() {
 		users = new ArrayList<User>();
 		User admin = new User("admin", "1111");

@@ -10,6 +10,7 @@ public class Item {
 		this.price = price;
 		this.amount = 0;
 	}
+	
 
 	public String getItemName() {
 		return this.itemName;

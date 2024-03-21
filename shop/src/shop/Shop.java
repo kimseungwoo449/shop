@@ -65,6 +65,7 @@ public class Shop {
 			System.out.println("[4] 총 매출 조회");
 		}
 	}
+	
 
 	private void runMenu(int choice) {
 		if (this.log != 0) {

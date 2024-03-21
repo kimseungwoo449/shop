@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class ItemManager {
 	private ArrayList<Item> items;
+	
 	private static ItemManager instance = new ItemManager();
 	
 	private ItemManager() {
