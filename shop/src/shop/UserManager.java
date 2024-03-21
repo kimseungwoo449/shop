@@ -69,7 +69,6 @@ public class UserManager {
 		}
 		return null;
 	}
-
 	
 	
 	// Read User
