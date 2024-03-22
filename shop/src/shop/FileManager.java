@@ -35,13 +35,19 @@ public class FileManager {
 
 	public void allSave() {
 		itemSave();
+		userSave();
 	}
 
 	private void itemSave() {
 		String data = itemManager.makeData();
 		save(itemFile, data);
 	}
-
+	
+	private void userSave() {
+		String data = userManager.makeData();
+		save(userFile,data);
+	}
+	
 	private void save(File file, String data) {
 		try {
 			fw = new FileWriter(file);
