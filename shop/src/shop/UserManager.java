@@ -105,7 +105,7 @@ public class UserManager {
 		if (amount < 1)
 			return;
 		
-		
+		user.modifyAmountInMyCart(itemName, amount);
 
 	}
 
