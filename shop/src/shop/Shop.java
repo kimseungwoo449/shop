@@ -1,5 +1,6 @@
 package shop;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Shop {
@@ -100,13 +101,11 @@ public class Shop {
 
 	private void join() {
 		Cart cart = userManager.createUser();
-		itemManager.setAllCarts(cart);
 		fileManager.allSave();
 	}
 
 	private void leave() {
 		String userId = userManager.deleteUser();
-		itemManager.deleteCartByUserId(userId);
 		fileManager.allSave();
 	}
 
@@ -151,7 +150,14 @@ public class Shop {
 		fileManager.allSave();
 	}
 	
+	private void loadData() {
+		ArrayList<String[]> data = fileManager.allLoad();
+		itemManager.setItems(data.get(0));
+		userManager.setUsers(data.get(1));
+	}
+	
 	public void run() {
+		loadData();
 		while (true) {
 			printMenu();
 			runMenu(inputNumber("Menu"));
