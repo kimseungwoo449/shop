@@ -94,7 +94,7 @@ public class Cart {
 
 			total += item.getPrice() * item.getAmount();
 		}
-		info += String.format("=============\n총 가격 : %d 원", total);
+		info += String.format("=================\n총 가격 : %d 원", total);
 		return info;
 	}
 
