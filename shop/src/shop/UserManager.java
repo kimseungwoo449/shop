@@ -16,10 +16,9 @@ public class UserManager {
 
 	private UserManager() {
 		users = new ArrayList<User>();
-		if (findUserIndexById("admin") != -1) {
-			User admin = new User("admin", "1111");
-			users.add(admin);
-		}
+		User admin = new User("admin", "1111");
+		users.add(admin);
+
 	}
 
 	public static UserManager getInstance() {
@@ -260,6 +259,8 @@ public class UserManager {
 
 	public void setUsers(String[] data) {
 		if (!data[0].equals("")) {
+			users = new ArrayList<User>();
+			
 			for (int i = 0; i < data.length; i++) {
 				String info[] = data[i].split(",");
 				String id = info[0];
