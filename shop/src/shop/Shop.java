@@ -89,8 +89,8 @@ public class Shop {
 				deleteItem();
 			else if (choice == MODIFY_ITEM)
 				modifyItem();
-//			else if(choice==SHOW_TOTAL)
-//				showTotal();
+			else if(choice==SHOW_TOTAL)
+				showTotal();
 			else if (choice == EXIT_ADMIN)
 				logout();
 		}
@@ -136,7 +136,11 @@ public class Shop {
 		Item item = itemManager.getItem();
 		userManager.setMyCart(item);
 	}
-
+	
+	private void showTotal() {
+		userManager.showTotal();
+	}
+	
 	public void run() {
 		while (true) {
 			printMenu();
