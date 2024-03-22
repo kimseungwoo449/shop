@@ -15,7 +15,7 @@ public class Shop {
 	private final int MODIFY_ITEM = 3;
 	private final int SHOW_TOTAL = 4;
 	private final int EXIT_ADMIN = 0;
-	
+
 	private UserManager userManager;
 	private ItemManager itemManager;
 	public static Scanner sc = new Scanner(System.in);
@@ -78,20 +78,20 @@ public class Shop {
 				login();
 			else if (choice == LOG_OUT)
 				logout();
-			else if(choice==SHOPPING)
+			else if (choice == SHOPPING)
 				shopping();
 			else if (choice == MY_PAGE)
 				myPage();
 		} else {
-			if(choice==ENROLL_ITEM)
+			if (choice == ENROLL_ITEM)
 				enrollItem();
-			else if(choice==DELETE_ITEM)
+			else if (choice == DELETE_ITEM)
 				deleteItem();
-			else if(choice==MODIFY_ITEM)
+			else if (choice == MODIFY_ITEM)
 				modifyItem();
 //			else if(choice==SHOW_TOTAL)
 //				showTotal();
-			else if (choice==EXIT_ADMIN)
+			else if (choice == EXIT_ADMIN)
 				logout();
 		}
 	}
@@ -114,26 +114,26 @@ public class Shop {
 	}
 
 	private void myPage() {
-		userManager.readMyInformation();
+		userManager.printMyPageSubMenu();;
 	}
 	
 	private void enrollItem() {
 		itemManager.enrollItem();
 	}
-	
+
 	private void deleteItem() {
 		itemManager.deleteItem();
 	}
-	
+
 	private void modifyItem() {
 		itemManager.updateItem();
 	}
-	
+
 	private void shopping() {
 		Item item = itemManager.getItem();
 		userManager.setMyCart(item);
 	}
-	
+
 	public void run() {
 		while (true) {
 			printMenu();
