@@ -145,13 +145,13 @@ public class ItemManager {
 			if (i < items.size() - 1)
 				data += ",";
 		}
-		if(allCarts.size()>0)
-			data += "\n";
 
 		for (int i = 0; i < allCarts.size(); i++) {
 			Cart cart = allCarts.get(i);
+			if (i==0&&cart.getCartSize()>0)
+				data += "\n";
 			data += cart.makeData();
-			if (i < allCarts.size() - 1)
+			if (cart.getCartSize() > 0 && i < allCarts.size() - 1)
 				data += "\n";
 		}
 
