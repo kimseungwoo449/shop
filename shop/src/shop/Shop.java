@@ -123,7 +123,8 @@ public class Shop {
 	}
 
 	private void deleteItem() {
-		itemManager.deleteItem();
+		String itemName = itemManager.deleteItem();
+		userManager.deleteItem(itemName);
 	}
 
 	private void modifyItem() {

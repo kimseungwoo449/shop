@@ -42,6 +42,13 @@ public class Cart {
 		return total;
 	}
 	
+	public void deleteItem(String itemName) {
+		for(Item item:myCart) {
+			if(item.getItemName().equals(itemName))
+				myCart.remove(item);
+		}
+	}
+	
 	@Override
 	public String toString() {
 		String info = "";

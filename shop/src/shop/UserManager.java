@@ -87,7 +87,7 @@ public class UserManager {
 		System.out.println("[4] 결제");
 		runMyPageSubMenu(Shop.inputNumber("SubMenu"));
 	}
-	
+
 	private void runMyPageSubMenu(int choice) {
 		if (choice == SHOW_MY_CART)
 			readMyInformation();
@@ -159,5 +159,13 @@ public class UserManager {
 
 		User user = users.get(Shop.log);
 		user.setMyCart(item);
+	}
+
+	public void deleteItem(String itemName) {
+		if (itemName == null)
+			return;
+		for (User user : users) {
+			user.deleteItem(itemName);
+		}
 	}
 }

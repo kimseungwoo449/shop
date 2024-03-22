@@ -36,7 +36,11 @@ public class User {
 			return;
 		myCart.setMyCart(item);
 	}
-
+	
+	public void deleteItem(String item) {
+		myCart.deleteItem(item);
+	}
+	
 	public int getPayment() {
 		return this.payment;
 	}
