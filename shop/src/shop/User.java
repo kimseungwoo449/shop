@@ -56,7 +56,13 @@ public class User {
 	public void setPayment() {
 		this.payment = myCart.payComplete();
 	}
-
+	
+	public void setAdminPayment(int total) {
+		if(Shop.log != 0)
+			return;
+		this.payment = total;
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("=== 장바구니 목록 ===\n%s", myCart);
