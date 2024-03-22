@@ -1,7 +1,6 @@
 package shop;
 
 public class Item {
-	// test 
 	
 	private String itemName;
 	private int price;

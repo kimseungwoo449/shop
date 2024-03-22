@@ -3,7 +3,7 @@ package shop;
 import java.util.ArrayList;
 
 public class User {
-	
+
 	private String id;
 	private String password;
 	private Cart myCart;
@@ -26,6 +26,16 @@ public class User {
 		return new User(this.id, this.password);
 	}
 
+	public Cart getMyCart() {
+		return this.myCart;
+	}
+
+	public void setMyCart(Item item) {
+		if (item == null)
+			return;
+		myCart.setMyCart(item);
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("ID : %s\nPASSWORD : %s\n=== 장바구니 목록 ===\n%s", id, password, myCart);

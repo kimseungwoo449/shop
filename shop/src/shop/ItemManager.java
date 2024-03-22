@@ -6,13 +6,20 @@ public class ItemManager {
 	private ArrayList<Item> items;
 	private static ItemManager instance = new ItemManager();
 	private ArrayList<Cart> allCarts;
-	
+
 	private ItemManager() {
 		items = new ArrayList<Item>();
+		allCarts = new ArrayList<Cart>();
 	}
 
 	public static ItemManager getInstance() {
 		return instance;
+	}
+
+	public void setAllCarts(Cart cart) {
+		if (cart == null)
+			return;
+		allCarts.add(cart);
 	}
 
 	// enroll item
@@ -95,5 +102,22 @@ public class ItemManager {
 	private void printItems() {
 		for (Item item : items)
 			System.out.println(item);
+	}
+
+	public Item getItem() {
+		if (Shop.log == -1) {
+			System.err.println("로그인 후 이용 가능합니다.");
+			return null;
+		}
+
+		printItems();
+		Item item = findItemByName();
+
+		if (item == null) {
+			System.err.println("찾으시는 품목이 존재하지 않습니다.");
+			return item;
+		}
+
+		return item.clone();
 	}
 }

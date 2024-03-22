@@ -14,7 +14,8 @@ public class Shop {
 	private final int DELETE_ITEM = 2;
 	private final int MODIFY_ITEM = 3;
 	private final int SHOW_TOTAL = 4;
-
+	private final int EXIT_ADMIN = 0;
+	
 	private UserManager userManager;
 	private ItemManager itemManager;
 	public static Scanner sc = new Scanner(System.in);
@@ -63,6 +64,7 @@ public class Shop {
 			System.out.println("[2] 아이템 삭제");
 			System.out.println("[3] 아이템 수정");
 			System.out.println("[4] 총 매출 조회");
+			System.out.println("[0] 로그 아웃");
 		}
 	}
 
@@ -76,8 +78,8 @@ public class Shop {
 				login();
 			else if (choice == LOG_OUT)
 				logout();
-//			else if(choice==SHOPPING)
-//				shopping();
+			else if(choice==SHOPPING)
+				shopping();
 			else if (choice == MY_PAGE)
 				myPage();
 		} else {
@@ -89,11 +91,14 @@ public class Shop {
 				modifyItem();
 //			else if(choice==SHOW_TOTAL)
 //				showTotal();
+			else if (choice==EXIT_ADMIN)
+				logout();
 		}
 	}
 
 	private void join() {
-		userManager.createUser();
+		Cart cart = userManager.createUser();
+		itemManager.setAllCarts(cart);
 	}
 
 	private void leave() {
@@ -122,6 +127,11 @@ public class Shop {
 	
 	private void modifyItem() {
 		itemManager.updateItem();
+	}
+	
+	private void shopping() {
+		Item item = itemManager.getItem();
+		userManager.setMyCart(item);
 	}
 	
 	public void run() {
