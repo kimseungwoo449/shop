@@ -79,9 +79,11 @@ public class FileManager {
 			br = new BufferedReader(fr);
 			while (br.ready()) {
 				data += br.readLine();
+				data+="\n";
 			}
 			if (data.length() != 0)
 				data = data.substring(0, data.length() - 1);
+			System.out.println("로드 성공");
 		} catch (Exception e) {
 			System.err.println("로드 실패");
 		}
