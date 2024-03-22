@@ -23,6 +23,9 @@ public class ItemManager {
 	}
 	
 	public void deleteCartByUserId(String id) {
+		if(id==null)
+			return;
+		
 		for(Cart cart:allCarts) {
 			if(cart.getMyId().equals(id)) {
 				allCarts.remove(cart);
@@ -92,20 +95,21 @@ public class ItemManager {
 	}
 
 	// delete item
-	public void deleteItem() {
+	public String deleteItem() {
 		if (items.size() == 0) {
 			System.err.println("상품 추가 후 이용가능합니다.");
-			return;
+			return null;
 		}
 
 		printItems();
 		Item item = findItemByName();
 
 		if (item == null)
-			return;
+			return null;
 
 		items.remove(item);
 		System.out.println("품목 삭제 완료.");
+		return item.getItemName();
 	}
 
 	private void printItems() {
