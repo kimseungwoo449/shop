@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class ItemManager {
 	private ArrayList<Item> items;
 	private static ItemManager instance = new ItemManager();
-
+	private ArrayList<Cart> allCarts;
+	
 	private ItemManager() {
 		items = new ArrayList<Item>();
 	}

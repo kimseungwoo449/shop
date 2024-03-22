@@ -6,12 +6,11 @@ public class Cart {
 	private ArrayList<Item> myCart;
 	private String myId;
 
-	
 	public Cart(String id) {
 		this.myId = id;
 		myCart = new ArrayList<Item>();
 	}
-	
+
 	@Override
 	public String toString() {
 		String info = "";
@@ -24,5 +23,5 @@ public class Cart {
 		}
 		return info;
 	}
-	
+
 }
