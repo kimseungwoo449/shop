@@ -145,7 +145,8 @@ public class ItemManager {
 			if (i < items.size() - 1)
 				data += ",";
 		}
-		data += "\n";
+		if(allCarts.size()>0)
+			data += "\n";
 
 		for (int i = 0; i < allCarts.size(); i++) {
 			Cart cart = allCarts.get(i);
