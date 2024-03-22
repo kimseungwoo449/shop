@@ -29,9 +29,7 @@ public class Item {
 	}
 
 	public void setAmount(int number) {
-		if (amount - number < 0)
-			return;
-		this.amount += number;
+		this.amount = number;
 	}
 
 	public Item clone() {
