@@ -25,11 +25,10 @@ public class Cart {
 		System.out.println("상품 추가가 완료 되었습니다.");
 	}
 	
-	public void modifyItem(String name,int price,int amount) {
+	public void modifyItemPrice(String name,int price) {
 		for(Item item:myCart) {
 			if(item.getItemName().equals(name)) {
 				item.setPrice(price);
-				item.setAmount(amount);
 			}
 		}
 	}

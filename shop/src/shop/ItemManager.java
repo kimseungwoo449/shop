@@ -33,7 +33,7 @@ public class ItemManager {
 			}
 		}
 	}
-
+	
 	// enroll item
 	public void enrollItem() {
 		String itemName = Shop.inputString("품목 이름");

@@ -104,6 +104,8 @@ public class UserManager {
 		int amount = Shop.inputNumber("수정할 수량");
 		if (amount < 1)
 			return;
+		
+		
 
 	}
 
@@ -199,7 +201,7 @@ public class UserManager {
 		String itemName = (String) info[0];
 		int modifiedPrice = (int) info[1];
 		for (User user : users) {
-			user.modifyMyCart(itemName, modifiedPrice,1);
+			user.modifyPriceInMyCart(itemName, modifiedPrice);
 		}
 	}
 }
