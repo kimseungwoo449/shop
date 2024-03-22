@@ -107,6 +107,7 @@ public class UserManager {
 		readMyInformation();
 		User user = users.get(Shop.log);
 		user.setPayment();
+		calculateTotal();
 		System.out.println("결제 완료.");
 	}
 
@@ -226,7 +227,6 @@ public class UserManager {
 	}
 
 	public void showTotal() {
-		calculateTotal();
 		User admin = users.get(ADMIN);
 		System.out.printf("총 매출 : %d 원\n", admin.getPayment());
 	}
@@ -236,7 +236,6 @@ public class UserManager {
 		for (int i = 1; i < users.size(); i++) {
 			User user = users.get(i);
 			total += user.getPayment();
-			user.setPayment();
 		}
 		users.get(ADMIN).setPayment(total);
 	}
@@ -247,7 +246,7 @@ public class UserManager {
 			User user = users.get(i);
 			data += user.getId() + "," + user.getPassword() + "," + user.getPayment();
 			Cart userCart = user.getMyCart();
-			if (userCart.getCartSize() > 0) {
+			if (i != 0 && userCart.getCartSize() > 0) {
 				String cartData = userCart.makeData();
 				data += "," + cartData;
 			}
@@ -260,7 +259,7 @@ public class UserManager {
 	public void setUsers(String[] data) {
 		if (!data[0].equals("")) {
 			users = new ArrayList<User>();
-			
+
 			for (int i = 0; i < data.length; i++) {
 				String info[] = data[i].split(",");
 				String id = info[0];
