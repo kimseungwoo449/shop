@@ -37,6 +37,10 @@ public class User {
 		myCart.setMyCart(item);
 	}
 	
+	public void modifyMyCart(String itemName,int price) {
+		myCart.modifyItemPrice(itemName, price);
+	}
+	
 	public void deleteItem(String item) {
 		myCart.deleteItem(item);
 	}
