@@ -37,8 +37,8 @@ public class User {
 		myCart.setMyCart(item);
 	}
 	
-	public void modifyMyCart(String itemName,int price) {
-		myCart.modifyItemPrice(itemName, price);
+	public void modifyMyCart(String itemName,int price,int amount) {
+		myCart.modifyItem(itemName, price,amount);
 	}
 	
 	public boolean deleteItem(String item) {
