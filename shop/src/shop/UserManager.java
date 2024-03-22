@@ -91,9 +91,22 @@ public class UserManager {
 	private void runMyPageSubMenu(int choice) {
 		if (choice == SHOW_MY_CART)
 			readMyInformation();
+		else if(choice == DELETE_ITEM_IN_MY_CART)
+			deleteItemInMyCart();
 
 	}
-
+	
+	private void deleteItemInMyCart() {
+		readMyInformation();
+		String itemName = Shop.inputString("삭제할 품목 이름");
+		User user = users.get(Shop.log);
+		if(!user.deleteItem(itemName)) {
+			System.err.println("존재하지 않는 품목입니다.");
+			return;
+		}
+		System.out.println("품목 삭제 완료");
+	}
+	
 	private void readMyInformation() {
 		System.out.println(users.get(Shop.log));
 	}
@@ -174,7 +187,6 @@ public class UserManager {
 			return;
 		String itemName = (String)info[0];
 		int modifiedPrice = (int)info[1];
-		System.out.println(modifiedPrice);
 		for(User user : users) {
 			user.modifyMyCart(itemName, modifiedPrice);
 		}
