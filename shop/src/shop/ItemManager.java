@@ -157,4 +157,13 @@ public class ItemManager {
 
 		return data;
 	}
+	
+	public void setItems(String[] data) {
+		for(int i = 0;i<data.length;i+=2) {
+			String itemName = data[i];
+			int price = Integer.parseInt(data[i+1]);
+			Item item = new Item(itemName,price);
+			items.add(item);
+		}
+	}
 }
