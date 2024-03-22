@@ -133,6 +133,7 @@ public class ItemManager {
 	
 	public void setItems(String[] data) {
 		if(!data[0].equals("")) {
+			items = new ArrayList<Item>();
 			for(int i = 0;i<data.length;i+=2) {
 				String itemName = data[i];
 				int price = Integer.parseInt(data[i+1]);
