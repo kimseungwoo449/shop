@@ -8,7 +8,7 @@ public class UserManager {
 	private final int MODIFY_ITEM_AMOUNT = 3;
 	private final int PAYMENT = 4;
 	private final int ADMIN = 0;
-	
+
 	private ArrayList<User> users;
 	private static UserManager instance = new UserManager();
 
@@ -99,14 +99,14 @@ public class UserManager {
 		else if (choice == PAYMENT)
 			payment();
 	}
-	
+
 	private void payment() {
 		readMyInformation();
 		User user = users.get(Shop.log);
 		user.setPayment();
 		System.out.println("결제 완료.");
 	}
-	
+
 	private void modifyItemAmount() {
 		readMyInformation();
 		User user = users.get(Shop.log);
@@ -114,7 +114,7 @@ public class UserManager {
 		int amount = Shop.inputNumber("수정할 수량");
 		if (amount < 1)
 			return;
-		
+
 		user.modifyAmountInMyCart(itemName, amount);
 
 	}
@@ -201,7 +201,7 @@ public class UserManager {
 		if (itemName == null)
 			return;
 		for (User user : users) {
-			if(user.getId().equals("admin"))
+			if (user.getId().equals("admin"))
 				continue;
 			user.deleteItem(itemName);
 		}
@@ -213,24 +213,40 @@ public class UserManager {
 		String itemName = (String) info[0];
 		int modifiedPrice = (int) info[1];
 		for (User user : users) {
-			if(user.getId().equals("admin"))
+			if (user.getId().equals("admin"))
 				continue;
 			user.modifyPriceInMyCart(itemName, modifiedPrice);
 		}
 	}
-	
+
 	public void showTotal() {
 		calculateTotal();
 		User admin = users.get(ADMIN);
-		System.out.printf("총 매출 : %d 원\n",admin.getPayment());
+		System.out.printf("총 매출 : %d 원\n", admin.getPayment());
 	}
-	
+
 	private void calculateTotal() {
 		int total = 0;
-		for(int i =1;i<users.size();i++) {
+		for (int i = 1; i < users.size(); i++) {
 			User user = users.get(i);
-			total+=user.getPayment();
+			total += user.getPayment();
 		}
 		users.get(ADMIN).setAdminPayment(total);
+	}
+
+	public String makeData() {
+		String data = "";
+		for (int i = 0; i < users.size(); i++) {
+			User user = users.get(i);
+			data += user.getId() + "," + user.getPassword() + "," + user.getPayment();
+			Cart userCart = user.getMyCart();
+			if (userCart.getCartSize() > 0) {
+				String cartData = userCart.makeData();
+				data += ","+cartData;
+			}
+			if (i < users.size() - 1)
+				data += "\n";
+		}
+		return data;
 	}
 }
