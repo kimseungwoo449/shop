@@ -79,10 +79,11 @@ public class ItemManager {
 			System.err.println("가격은 1원 이상이어야 합니다.");
 			return temp;
 		}
+		item.setPrice(price);
+		
 		temp = new Object[2];
 		temp[0] = item.getItemName();
 		temp[1] = item.getPrice();
-		item.setPrice(price);
 		System.out.println("품목 수정 완료.");
 		return temp;
 	}

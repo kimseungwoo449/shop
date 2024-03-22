@@ -174,7 +174,7 @@ public class UserManager {
 			return;
 		String itemName = (String)info[0];
 		int modifiedPrice = (int)info[1];
-		
+		System.out.println(modifiedPrice);
 		for(User user : users) {
 			user.modifyMyCart(itemName, modifiedPrice);
 		}
