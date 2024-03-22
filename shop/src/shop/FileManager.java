@@ -38,20 +38,20 @@ public class FileManager {
 		itemSave();
 		userSave();
 	}
-	
+
 	public ArrayList<String[]> allLoad() {
 		String userData = userLoad();
 		String itemData = itemLoad();
-		
+
 		String userDataArray[] = userData.split("\n");
 		String itemDataArray[] = itemData.split(",");
 		ArrayList<String[]> data = new ArrayList<String[]>();
 		data.add(itemDataArray);
 		data.add(userDataArray);
-		
+
 		return data;
 	}
-	
+
 	private void itemSave() {
 		String data = itemManager.makeData();
 		save(itemFile, data);
@@ -61,17 +61,17 @@ public class FileManager {
 		String data = userManager.makeData();
 		save(userFile, data);
 	}
-	
+
 	private String itemLoad() {
 		String data = load(itemFile);
 		return data;
 	}
-	
+
 	private String userLoad() {
 		String data = load(userFile);
 		return data;
 	}
-	
+
 	private String load(File file) {
 		String data = "";
 		try {
@@ -79,14 +79,14 @@ public class FileManager {
 			br = new BufferedReader(fr);
 			while (br.ready()) {
 				data += br.readLine();
-				data+="\n";
+				data += "\n";
 			}
 			if (data.length() != 0)
 				data = data.substring(0, data.length() - 1);
-			System.out.println("로드 성공");
 		} catch (Exception e) {
 			System.err.println("로드 실패");
 		}
+
 		return data;
 	}
 
@@ -95,7 +95,6 @@ public class FileManager {
 			fw = new FileWriter(file);
 			fw.write(data);
 			fw.close();
-			System.out.println("자동 저장 완료");
 		} catch (Exception e) {
 			System.err.println("저장 실패");
 		}
