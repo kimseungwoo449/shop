@@ -27,12 +27,20 @@ public class Cart {
 	
 	public void modifyItemPrice(String name,int price) {
 		int index = itemIndexByName(name);
+		if(index==-1) {
+			System.err.println("찾으시는 상품이 존재하지 않습니다.");
+			return;
+		}
 		Item item = myCart.get(index);
 		item.setPrice(price);
 	}
 	
 	public void modifyItemAmount(String name,int amount) {
 		int index = itemIndexByName(name);
+		if(index==-1) {
+			System.err.println("찾으시는 상품이 존재하지 않습니다.");
+			return;
+		}
 		Item item = myCart.get(index);
 		item.setAmount(amount);
 	}
