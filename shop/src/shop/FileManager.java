@@ -42,12 +42,28 @@ public class FileManager {
 		String data = itemManager.makeData();
 		save(itemFile, data);
 	}
-	
+
 	private void userSave() {
 		String data = userManager.makeData();
-		save(userFile,data);
+		save(userFile, data);
 	}
-	
+
+	private String load(File file) {
+		String data = "";
+		try {
+			fr = new FileReader(file);
+			br = new BufferedReader(fr);
+			while (br.ready()) {
+				data += br.readLine();
+			}
+			if (data.length() != 0)
+				data = data.substring(0, data.length() - 1);
+		} catch (Exception e) {
+			System.err.println("로드 실패");
+		}
+		return data;
+	}
+
 	private void save(File file, String data) {
 		try {
 			fw = new FileWriter(file);
