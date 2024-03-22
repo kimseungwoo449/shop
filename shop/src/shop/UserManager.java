@@ -95,8 +95,17 @@ public class UserManager {
 			deleteItemInMyCart();
 		else if (choice == MODIFY_ITEM_AMOUNT)
 			modifyItemAmount();
+		else if (choice == PAYMENT)
+			payment();
 	}
-
+	
+	private void payment() {
+		readMyInformation();
+		User user = users.get(Shop.log);
+		user.setPayment();
+		System.out.println("결제 완료.");
+	}
+	
 	private void modifyItemAmount() {
 		readMyInformation();
 		User user = users.get(Shop.log);
@@ -191,6 +200,8 @@ public class UserManager {
 		if (itemName == null)
 			return;
 		for (User user : users) {
+			if(user.getId().equals("admin"))
+				continue;
 			user.deleteItem(itemName);
 		}
 	}
@@ -201,6 +212,8 @@ public class UserManager {
 		String itemName = (String) info[0];
 		int modifiedPrice = (int) info[1];
 		for (User user : users) {
+			if(user.getId().equals("admin"))
+				continue;
 			user.modifyPriceInMyCart(itemName, modifiedPrice);
 		}
 	}
