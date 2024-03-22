@@ -90,7 +90,7 @@ public class Cart {
 			Item item = myCart.get(i);
 			data += "," + item.getItemName() + "," + item.getPrice() + "," + item.getAmount();
 			if(i<myCart.size()-1)
-				data+="\n";
+				data+=",";
 		}
 		return data;
 	}
