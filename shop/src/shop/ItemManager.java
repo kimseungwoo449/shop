@@ -1,6 +1,7 @@
 package shop;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ItemManager {
 	private ArrayList<Item> items;
@@ -130,11 +131,13 @@ public class ItemManager {
 	}
 	
 	public void setItems(String[] data) {
-		for(int i = 0;i<data.length;i+=2) {
-			String itemName = data[i];
-			int price = Integer.parseInt(data[i+1]);
-			Item item = new Item(itemName,price);
-			items.add(item);
+		if(!data[0].equals("")) {
+			for(int i = 0;i<data.length;i+=2) {
+				String itemName = data[i];
+				int price = Integer.parseInt(data[i+1]);
+				Item item = new Item(itemName,price);
+				items.add(item);
+			}						
 		}
 	}
 }
