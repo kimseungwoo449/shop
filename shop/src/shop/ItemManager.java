@@ -21,7 +21,16 @@ public class ItemManager {
 			return;
 		allCarts.add(cart);
 	}
-
+	
+	public void deleteCartByUserId(String id) {
+		for(Cart cart:allCarts) {
+			if(cart.getMyId().equals(id)) {
+				allCarts.remove(cart);
+				return;
+			}
+		}
+	}
+	
 	// enroll item
 	public void enrollItem() {
 		String itemName = Shop.inputString("품목 이름");
