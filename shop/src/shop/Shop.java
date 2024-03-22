@@ -128,7 +128,8 @@ public class Shop {
 	}
 
 	private void modifyItem() {
-		itemManager.updateItem();
+		Object[] modifiedItemInfo = itemManager.updateItem();
+		userManager.modifiyCart(modifiedItemInfo);
 	}
 
 	private void shopping() {
