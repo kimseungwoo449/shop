@@ -11,6 +11,10 @@ public class Cart {
 		myCart = new ArrayList<Item>();
 	}
 	
+	public String getMyId() {
+		return this.myId;
+	}
+	
 	public void setMyCart(Item item) {
 		if(isExist(item)) {
 			System.err.println("장바구니에 이미 존재하는 품목입니다.");
