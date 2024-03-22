@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 public class FileManager {
 	private FileReader fr;
@@ -37,7 +38,20 @@ public class FileManager {
 		itemSave();
 		userSave();
 	}
-
+	
+	public ArrayList<String[]> allLoad() {
+		String userData = userLoad();
+		String itemData = itemLoad();
+		
+		String userDataArray[] = userData.split("\n");
+		String itemDataArray[] = itemData.split(",");
+		ArrayList<String[]> data = new ArrayList<String[]>();
+		data.add(itemDataArray);
+		data.add(userDataArray);
+		
+		return data;
+	}
+	
 	private void itemSave() {
 		String data = itemManager.makeData();
 		save(itemFile, data);
@@ -47,7 +61,17 @@ public class FileManager {
 		String data = userManager.makeData();
 		save(userFile, data);
 	}
-
+	
+	private String itemLoad() {
+		String data = load(itemFile);
+		return data;
+	}
+	
+	private String userLoad() {
+		String data = load(userFile);
+		return data;
+	}
+	
 	private String load(File file) {
 		String data = "";
 		try {
