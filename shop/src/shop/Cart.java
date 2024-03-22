@@ -50,15 +50,15 @@ public class Cart {
 		return total;
 	}
 	
-	public void deleteItem(String itemName) {
+	public boolean deleteItem(String itemName) {
 		for(Item item:myCart) {
 			if(item.getItemName().equals(itemName)) {
 				myCart.remove(item);
-				return;
+				return true;
 			}
 		}
+		return false;
 	}
-	
 	
 	
 	@Override
