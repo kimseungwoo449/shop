@@ -44,8 +44,10 @@ public class Cart {
 	
 	public void deleteItem(String itemName) {
 		for(Item item:myCart) {
-			if(item.getItemName().equals(itemName))
+			if(item.getItemName().equals(itemName)) {
 				myCart.remove(item);
+				return;
+			}
 		}
 	}
 	

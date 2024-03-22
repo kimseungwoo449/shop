@@ -119,7 +119,6 @@ public class ItemManager {
 
 	public Item getItem() {
 		if (Shop.log == -1) {
-			System.err.println("로그인 후 이용 가능합니다.");
 			return null;
 		}
 
@@ -127,7 +126,6 @@ public class ItemManager {
 		Item item = findItemByName();
 
 		if (item == null) {
-			System.err.println("찾으시는 품목이 존재하지 않습니다.");
 			return item;
 		}
 
