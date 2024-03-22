@@ -99,20 +99,21 @@ public class UserManager {
 	}
 
 	// Delete user
-	public void deleteUser() {
+	public String deleteUser() {
 		if (!isPossible()) {
 			System.err.println("로그인 후 이용가능합니다.");
-			return;
+			return null;
 		}
 
 		User user = users.get(Shop.log);
 
 		if (!isMyId(user))
-			return;
+			return null;
 
 		users.remove(user);
 		System.out.println("탈퇴 완료.");
 		Shop.log = -1;
+		return user.getId();
 	}
 
 	// login
