@@ -15,7 +15,8 @@ public class Shop {
 	private final int MODIFY_ITEM = 3;
 	private final int SHOW_TOTAL = 4;
 	private final int EXIT_ADMIN = 0;
-
+	
+	private FileManager fileManager;
 	private UserManager userManager;
 	private ItemManager itemManager;
 	public static Scanner sc = new Scanner(System.in);
@@ -28,6 +29,7 @@ public class Shop {
 		this.log = -1;
 		this.userManager = UserManager.getInstance();
 		this.itemManager = ItemManager.getInstance();
+		this.fileManager = FileManager.getInstance();
 	}
 
 	public static String inputString(String message) {
@@ -99,11 +101,13 @@ public class Shop {
 	private void join() {
 		Cart cart = userManager.createUser();
 		itemManager.setAllCarts(cart);
+		fileManager.allSave();
 	}
 
 	private void leave() {
 		String userId = userManager.deleteUser();
 		itemManager.deleteCartByUserId(userId);
+		fileManager.allSave();
 	}
 
 	private void login() {
@@ -115,30 +119,36 @@ public class Shop {
 	}
 
 	private void myPage() {
-		userManager.printMyPageSubMenu();;
+		userManager.printMyPageSubMenu();
+		fileManager.allSave();
 	}
 	
 	private void enrollItem() {
 		itemManager.enrollItem();
+		fileManager.allSave();
 	}
 
 	private void deleteItem() {
 		String itemName = itemManager.deleteItem();
 		userManager.deleteItem(itemName);
+		fileManager.allSave();
 	}
 
 	private void modifyItem() {
 		Object[] modifiedItemInfo = itemManager.updateItem();
 		userManager.modifiyCart(modifiedItemInfo);
+		fileManager.allSave();
 	}
 
 	private void shopping() {
 		Item item = itemManager.getItem();
 		userManager.setMyCart(item);
+		fileManager.allSave();
 	}
 	
 	private void showTotal() {
 		userManager.showTotal();
+		fileManager.allSave();
 	}
 	
 	public void run() {
