@@ -168,4 +168,15 @@ public class UserManager {
 			user.deleteItem(itemName);
 		}
 	}
+	
+	public void modifiyCart(Object[] info) {
+		if(info==null)
+			return;
+		String itemName = (String)info[0];
+		int modifiedPrice = (int)info[1];
+		
+		for(User user : users) {
+			user.modifyMyCart(itemName, modifiedPrice);
+		}
+	}
 }
