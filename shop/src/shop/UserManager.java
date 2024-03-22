@@ -91,22 +91,33 @@ public class UserManager {
 	private void runMyPageSubMenu(int choice) {
 		if (choice == SHOW_MY_CART)
 			readMyInformation();
-		else if(choice == DELETE_ITEM_IN_MY_CART)
+		else if (choice == DELETE_ITEM_IN_MY_CART)
 			deleteItemInMyCart();
+		else if (choice == MODIFY_ITEM_AMOUNT)
+			modifyItemAmount();
+	}
+
+	private void modifyItemAmount() {
+		readMyInformation();
+		User user = users.get(Shop.log);
+		String itemName = Shop.inputString("수정할 품목 이름");
+		int amount = Shop.inputNumber("수정할 수량");
+		if (amount < 1)
+			return;
 
 	}
-	
+
 	private void deleteItemInMyCart() {
 		readMyInformation();
 		String itemName = Shop.inputString("삭제할 품목 이름");
 		User user = users.get(Shop.log);
-		if(!user.deleteItem(itemName)) {
+		if (!user.deleteItem(itemName)) {
 			System.err.println("존재하지 않는 품목입니다.");
 			return;
 		}
 		System.out.println("품목 삭제 완료");
 	}
-	
+
 	private void readMyInformation() {
 		System.out.println(users.get(Shop.log));
 	}
@@ -181,14 +192,14 @@ public class UserManager {
 			user.deleteItem(itemName);
 		}
 	}
-	
+
 	public void modifiyCart(Object[] info) {
-		if(info==null)
+		if (info == null)
 			return;
-		String itemName = (String)info[0];
-		int modifiedPrice = (int)info[1];
-		for(User user : users) {
-			user.modifyMyCart(itemName, modifiedPrice);
+		String itemName = (String) info[0];
+		int modifiedPrice = (int) info[1];
+		for (User user : users) {
+			user.modifyMyCart(itemName, modifiedPrice,1);
 		}
 	}
 }
