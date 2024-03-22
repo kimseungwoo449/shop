@@ -146,14 +146,14 @@ public class ItemManager {
 				data += ",";
 		}
 
-		for (int i = 0; i < allCarts.size(); i++) {
-			Cart cart = allCarts.get(i);
-			if (i==0&&cart.getCartSize()>0)
-				data += "\n";
-			data += cart.makeData();
-			if (cart.getCartSize() > 0 && i < allCarts.size() - 1)
-				data += "\n";
-		}
+//		for (int i = 0; i < allCarts.size(); i++) {
+//			Cart cart = allCarts.get(i);
+//			if (i == 0 && cart.getCartSize() > 0)
+//				data += "\n";
+//			data += cart.makeData();
+//			if (cart.getCartSize() > 0 && i < allCarts.size() - 1)
+//				data += "\n";
+//		}
 
 		return data;
 	}
