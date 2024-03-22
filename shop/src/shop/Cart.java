@@ -25,6 +25,14 @@ public class Cart {
 		System.out.println("상품 추가가 완료 되었습니다.");
 	}
 	
+	public void modifyItemPrice(String name,int price) {
+		for(Item item:myCart) {
+			if(item.getItemName().equals(name)) {
+				item.setPrice(price);
+			}
+		}
+	}
+	
 	private boolean isExist(Item item) {
 		for(Item targetItem:myCart) {
 			if(item.getItemName().equals(targetItem.getItemName()))
@@ -50,6 +58,8 @@ public class Cart {
 			}
 		}
 	}
+	
+	
 	
 	@Override
 	public String toString() {
