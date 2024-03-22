@@ -41,6 +41,10 @@ public class User {
 		myCart.modifyItemPrice(itemName, price);
 	}
 	
+	public void modifyAmountInMyCart(String itemName,int amount) {
+		myCart.modifyItemAmount(itemName, amount);
+	}
+	
 	public boolean deleteItem(String item) {
 		return myCart.deleteItem(item);
 	}
