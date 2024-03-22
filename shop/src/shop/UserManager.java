@@ -14,8 +14,10 @@ public class UserManager {
 
 	private UserManager() {
 		users = new ArrayList<User>();
-		User admin = new User("admin", "1111");
-		users.add(admin);
+		if (findUserIndexById("admin") != -1) {
+			User admin = new User("admin", "1111");
+			users.add(admin);
+		}
 	}
 
 	public static UserManager getInstance() {
@@ -188,13 +190,16 @@ public class UserManager {
 
 	// shopping
 	public void setMyCart(Item item) {
-		if (!isPossible() || item == null) {
+		if (!isPossible()) {
 			System.err.println("로그인 후 이용가능합니다.");
 			return;
 		}
 
+		if (item == null)
+			return;
+
 		User user = users.get(Shop.log);
-		user.setMyCart(item);
+		user.setMyCart(item, 1);
 	}
 
 	public void deleteItem(String itemName) {
@@ -230,8 +235,9 @@ public class UserManager {
 		for (int i = 1; i < users.size(); i++) {
 			User user = users.get(i);
 			total += user.getPayment();
+			user.setPayment();
 		}
-		users.get(ADMIN).setAdminPayment(total);
+		users.get(ADMIN).setPayment(total);
 	}
 
 	public String makeData() {
@@ -242,11 +248,37 @@ public class UserManager {
 			Cart userCart = user.getMyCart();
 			if (userCart.getCartSize() > 0) {
 				String cartData = userCart.makeData();
-				data += ","+cartData;
+				data += "," + cartData;
 			}
 			if (i < users.size() - 1)
 				data += "\n";
 		}
 		return data;
+	}
+
+	public void setUsers(String[] data) {
+		if (!data[0].equals("")) {
+			for (int i = 0; i < data.length; i++) {
+				String info[] = data[i].split(",");
+				String id = info[0];
+				String password = info[1];
+				int payment = Integer.parseInt(info[2]);
+				User user = new User(id, password);
+				user.setPayment(payment);
+
+				if (info.length > 3) {
+					for (int j = 3; j < info.length; j += 4) {
+						String myId = info[j];
+						String itemName = info[j + 1];
+						int price = Integer.parseInt(info[j + 2]);
+						int amount = Integer.parseInt(info[j + 3]);
+
+						Item item = new Item(itemName, price);
+						user.setMyCart(item, amount);
+					}
+				}
+				users.add(user);
+			}
+		}
 	}
 }
