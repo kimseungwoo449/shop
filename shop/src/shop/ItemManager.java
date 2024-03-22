@@ -21,19 +21,19 @@ public class ItemManager {
 			return;
 		allCarts.add(cart);
 	}
-	
+
 	public void deleteCartByUserId(String id) {
-		if(id==null)
+		if (id == null)
 			return;
-		
-		for(Cart cart:allCarts) {
-			if(cart.getMyId().equals(id)) {
+
+		for (Cart cart : allCarts) {
+			if (cart.getMyId().equals(id)) {
 				allCarts.remove(cart);
 				return;
 			}
 		}
 	}
-	
+
 	// enroll item
 	public void enrollItem() {
 		String itemName = Shop.inputString("품목 이름");
@@ -60,27 +60,31 @@ public class ItemManager {
 	}
 
 	// update item
-	public void updateItem() {
+	public Object[] updateItem() {
+		Object[] temp = null;
 		if (items.size() == 0) {
 			System.err.println("상품 추가 후 이용가능합니다.");
-			return;
+			return temp;
 		}
 
 		printItems();
 		Item item = findItemByName();
 
 		if (item == null)
-			return;
+			return temp;
 
 		int price = Shop.inputNumber("수정할 가격");
 
 		if (price < 1) {
 			System.err.println("가격은 1원 이상이어야 합니다.");
-			return;
+			return temp;
 		}
-
+		temp = new Object[2];
+		temp[0] = item.getItemName();
+		temp[1] = item.getPrice();
 		item.setPrice(price);
 		System.out.println("품목 수정 완료.");
+		return temp;
 	}
 
 	private Item findItemByName() {
