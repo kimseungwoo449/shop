@@ -83,6 +83,18 @@ public class Cart {
 		return false;
 	}
 
+	public String makeData() {
+		String data = "";
+		data += this.myId;
+		for (int i = 0; i < myCart.size(); i++) {
+			Item item = myCart.get(i);
+			data += "," + item.getItemName() + "," + item.getPrice() + "," + item.getAmount();
+			if(i<myCart.size()-1)
+				data+="\n";
+		}
+		return data;
+	}
+
 	@Override
 	public String toString() {
 		String info = "";
