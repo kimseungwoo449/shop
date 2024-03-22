@@ -31,10 +31,10 @@ public class User {
 		return this.myCart;
 	}
 
-	public void setMyCart(Item item) {
+	public void setMyCart(Item item,int amount) {
 		if (item == null)
 			return;
-		myCart.setMyCart(item);
+		myCart.setMyCart(item,amount);
 	}
 	
 	public void modifyPriceInMyCart(String itemName,int price) {
@@ -57,10 +57,8 @@ public class User {
 		this.payment = myCart.payComplete();
 	}
 	
-	public void setAdminPayment(int total) {
-		if(Shop.log != 0)
-			return;
-		this.payment = total;
+	public void setPayment(int total) {
+		this.payment += total;
 	}
 	
 	@Override
