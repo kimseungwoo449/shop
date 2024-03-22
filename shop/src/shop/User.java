@@ -41,8 +41,8 @@ public class User {
 		myCart.modifyItemPrice(itemName, price);
 	}
 	
-	public void deleteItem(String item) {
-		myCart.deleteItem(item);
+	public boolean deleteItem(String item) {
+		return myCart.deleteItem(item);
 	}
 	
 	public int getPayment() {
