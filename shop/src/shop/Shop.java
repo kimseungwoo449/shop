@@ -102,7 +102,8 @@ public class Shop {
 	}
 
 	private void leave() {
-		userManager.deleteUser();
+		String userId = userManager.deleteUser();
+		itemManager.deleteCartByUserId(userId);
 	}
 
 	private void login() {
