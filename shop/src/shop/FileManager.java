@@ -10,11 +10,11 @@ public class FileManager {
 	private FileWriter fw;
 	private BufferedReader br;
 
-	private File ItemFile;
-	private String ItemFileName;
+	private File itemFile;
+	private String itemFileName;
 
-	private File UserFile;
-	private String UserFileName;
+	private File userFile;
+	private String userFileName;
 
 	private static FileManager instance = new FileManager();
 
@@ -22,18 +22,34 @@ public class FileManager {
 	private ItemManager itemManager = ItemManager.getInstance();
 
 	private FileManager() {
-		ItemFileName = "item.txt";
-		ItemFile = new File(ItemFileName);
-		
-		UserFileName = "user.txt";
-		UserFile = new File(UserFileName);
+		itemFileName = "item.txt";
+		itemFile = new File(itemFileName);
+
+		userFileName = "user.txt";
+		userFile = new File(userFileName);
 	}
 
 	public static FileManager getInstance() {
 		return instance;
 	}
 
-	public void save() {
+	public void allSave() {
+		itemSave();
+	}
 
+	private void itemSave() {
+		String data = itemManager.makeData();
+		save(itemFile, data);
+	}
+
+	private void save(File file, String data) {
+		try {
+			fw = new FileWriter(file);
+			fw.write(data);
+			fw.close();
+			System.out.println("자동 저장 완료");
+		} catch (Exception e) {
+			System.err.println("저장 실패");
+		}
 	}
 }
