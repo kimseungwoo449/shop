@@ -15,12 +15,12 @@ public class Cart {
 		return this.myId;
 	}
 
-	public void setMyCart(Item item) {
+	public void setMyCart(Item item,int amount) {
 		if (isExist(item)) {
 			System.err.println("장바구니에 이미 존재하는 품목입니다.");
 			return;
 		}
-		item.setAmount(1);
+		item.setAmount(amount);
 		myCart.add(item);
 		System.out.println("상품 추가가 완료 되었습니다.");
 	}
@@ -28,7 +28,6 @@ public class Cart {
 	public void modifyItemPrice(String name, int price) {
 		int index = itemIndexByName(name);
 		if (index == -1) {
-			System.err.println("찾으시는 상품이 존재하지 않습니다.");
 			return;
 		}
 		Item item = myCart.get(index);
@@ -38,7 +37,6 @@ public class Cart {
 	public void modifyItemAmount(String name, int amount) {
 		int index = itemIndexByName(name);
 		if (index == -1) {
-			System.err.println("찾으시는 상품이 존재하지 않습니다.");
 			return;
 		}
 		Item item = myCart.get(index);
