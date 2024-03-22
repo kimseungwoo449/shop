@@ -222,7 +222,7 @@ public class UserManager {
 	public void showTotal() {
 		calculateTotal();
 		User admin = users.get(ADMIN);
-		System.out.printf("총 매출 : %d\n",admin.getPayment());
+		System.out.printf("총 매출 : %d 원\n",admin.getPayment());
 	}
 	
 	private void calculateTotal() {
