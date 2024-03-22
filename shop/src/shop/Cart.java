@@ -26,11 +26,26 @@ public class Cart {
 	}
 	
 	public void modifyItemPrice(String name,int price) {
-		for(Item item:myCart) {
+		int index = itemIndexByName(name);
+		Item item = myCart.get(index);
+		item.setPrice(price);
+	}
+	
+	public void modifyItemAmount(String name,int amount) {
+		int index = itemIndexByName(name);
+		Item item = myCart.get(index);
+		item.setAmount(amount);
+	}
+	
+	private int itemIndexByName(String name) {
+		int index=-1;
+		for(int i =0;i<myCart.size();i++) {
+			Item item = myCart.get(i);
 			if(item.getItemName().equals(name)) {
-				item.setPrice(price);
+				index = i;
 			}
 		}
+		return index;
 	}
 	
 	private boolean isExist(Item item) {
