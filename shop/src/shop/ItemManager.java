@@ -2,6 +2,8 @@ package shop;
 
 import java.util.ArrayList;
 
+//최종
+
 public class ItemManager {
 	private ArrayList<Item> items;
 	private static ItemManager instance = new ItemManager();

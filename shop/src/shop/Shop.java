@@ -3,6 +3,8 @@ package shop;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//최종
+
 public class Shop {
 	private final int JOIN = 1;
 	private final int LEAVE = 2;

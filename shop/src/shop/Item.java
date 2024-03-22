@@ -1,5 +1,7 @@
 package shop;
 
+//최종
+
 public class Item {
 	
 	private String itemName;

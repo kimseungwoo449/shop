@@ -2,6 +2,8 @@ package shop;
 
 import java.util.ArrayList;
 
+//최종
+
 public class UserManager {
 	private final int SHOW_MY_CART = 1;
 	private final int DELETE_ITEM_IN_MY_CART = 2;

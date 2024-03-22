@@ -1,5 +1,7 @@
 package shop;
 
+//최종
+
 public class User {
 	private String id;
 	private String password;

@@ -2,6 +2,8 @@ package shop;
 
 import java.util.ArrayList;
 
+//최종
+
 public class Cart {
 	private ArrayList<Item> myCart;
 	private String myId;

@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
+// 최종
+
 public class FileManager {
 	private FileReader fr;
 	private FileWriter fw;
