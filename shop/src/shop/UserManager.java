@@ -7,7 +7,8 @@ public class UserManager {
 	private final int DELETE_ITEM_IN_MY_CART = 2;
 	private final int MODIFY_ITEM_AMOUNT = 3;
 	private final int PAYMENT = 4;
-
+	private final int ADMIN = 0;
+	
 	private ArrayList<User> users;
 	private static UserManager instance = new UserManager();
 
@@ -216,5 +217,20 @@ public class UserManager {
 				continue;
 			user.modifyPriceInMyCart(itemName, modifiedPrice);
 		}
+	}
+	
+	public void showTotal() {
+		calculateTotal();
+		User admin = users.get(ADMIN);
+		System.out.printf("총 매출 : %d\n",admin.getPayment());
+	}
+	
+	private void calculateTotal() {
+		int total = 0;
+		for(int i =1;i<users.size();i++) {
+			User user = users.get(i);
+			total+=user.getPayment();
+		}
+		users.get(ADMIN).setAdminPayment(total);
 	}
 }
