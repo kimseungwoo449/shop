@@ -7,7 +7,7 @@ public class UserManager {
 	private final int DELETE_ITEM_IN_MY_CART = 2;
 	private final int MODIFY_ITEM_AMOUNT = 3;
 	private final int PAYMENT = 4;
-	
+
 	private ArrayList<User> users;
 	private static UserManager instance = new UserManager();
 
@@ -58,7 +58,6 @@ public class UserManager {
 		}
 		return -1;
 	}
-	
 
 	private boolean isMyId(User user) {
 		String id = Shop.inputString("ID");
@@ -70,38 +69,35 @@ public class UserManager {
 		}
 		return true;
 	}
-	
+
 	public void printMyPageSubMenu() {
 		if (!isPossible()) {
 			System.err.println("로그인 후 이용가능합니다.");
 			return;
 		}
+
+		User user = users.get(Shop.log);
+
+		if (!isMyId(user))
+			return;
+
 		System.out.println("[1] 내 장바구니");
 		System.out.println("[2] 품목 삭제");
 		System.out.println("[3] 수량 수정");
-		System.out.println("[4] 결제");		
+		System.out.println("[4] 결제");
+		runMyPageSubMenu(Shop.inputNumber("SubMenu"));
 	}
 	
 	private void runMyPageSubMenu(int choice) {
-		if(choice==SHOW_MY_CART)
+		if (choice == SHOW_MY_CART)
 			readMyInformation();
-			
+
 	}
-	
+
 	private void readMyInformation() {
-		if (!isPossible()) {
-			System.err.println("로그인 후 이용가능합니다.");
-			return;
-		}
-		
-		User user = users.get(Shop.log);
-		
-		if (!isMyId(user))
-			return;
-		
-		System.out.println(user);
+		System.out.println(users.get(Shop.log));
 	}
-	
+
 	// Delete user
 	public void deleteUser() {
 		if (!isPossible()) {
