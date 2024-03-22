@@ -33,7 +33,7 @@ public class ItemManager {
 			}
 		}
 	}
-	
+
 	// enroll item
 	public void enrollItem() {
 		String itemName = Shop.inputString("품목 이름");
@@ -80,7 +80,7 @@ public class ItemManager {
 			return temp;
 		}
 		item.setPrice(price);
-		
+
 		temp = new Object[2];
 		temp[0] = item.getItemName();
 		temp[1] = item.getPrice();
@@ -135,5 +135,25 @@ public class ItemManager {
 		}
 
 		return item.clone();
+	}
+
+	public String makeData() {
+		String data = "";
+		for (int i = 0; i < items.size(); i++) {
+			Item item = items.get(i);
+			data += item.getItemName() + "," + item.getPrice();
+			if (i < items.size() - 1)
+				data += ",";
+		}
+		data += "\n";
+
+		for (int i = 0; i < allCarts.size(); i++) {
+			Cart cart = allCarts.get(i);
+			data += cart.makeData();
+			if (i < allCarts.size() - 1)
+				data += "\n";
+		}
+
+		return data;
 	}
 }
