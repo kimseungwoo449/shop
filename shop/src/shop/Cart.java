@@ -94,7 +94,11 @@ public class Cart {
 		}
 		return data;
 	}
-
+	
+	public int getCartSize() {
+		return myCart.size();
+	}
+	
 	@Override
 	public String toString() {
 		String info = "";
