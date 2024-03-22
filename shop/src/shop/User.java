@@ -3,15 +3,16 @@ package shop;
 import java.util.ArrayList;
 
 public class User {
-
 	private String id;
 	private String password;
 	private Cart myCart;
+	private int payment;
 
 	public User(String id, String password) {
 		this.id = id;
 		this.password = password;
 		this.myCart = new Cart(this.id);
+		this.payment = 0;
 	}
 
 	public String getId() {
@@ -35,7 +36,15 @@ public class User {
 			return;
 		myCart.setMyCart(item);
 	}
-	
+
+	public int getPayment() {
+		return this.payment;
+	}
+
+	public void setPayment() {
+		this.payment = myCart.payComplete();
+	}
+
 	@Override
 	public String toString() {
 		return String.format("ID : %s\nPASSWORD : %s\n=== 장바구니 목록 ===\n%s", id, password, myCart);

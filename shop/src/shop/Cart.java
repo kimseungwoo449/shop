@@ -16,7 +16,7 @@ public class Cart {
 			System.err.println("장바구니에 이미 존재하는 품목입니다.");
 			return;
 		}
-		
+		item.setAmount(1);
 		myCart.add(item);
 		System.out.println("상품 추가가 완료 되었습니다.");
 	}
@@ -27,6 +27,15 @@ public class Cart {
 				return true;
 		}
 		return false;
+	}
+	
+	public int payComplete() {
+		int total = 0;
+		for(Item item:myCart) {
+			total+=item.getPrice()*item.getAmount();
+		}
+		myCart.clear();
+		return total;
 	}
 	
 	@Override
