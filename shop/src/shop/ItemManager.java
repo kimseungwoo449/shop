@@ -5,33 +5,13 @@ import java.util.ArrayList;
 public class ItemManager {
 	private ArrayList<Item> items;
 	private static ItemManager instance = new ItemManager();
-	private ArrayList<Cart> allCarts;
 
 	private ItemManager() {
 		items = new ArrayList<Item>();
-		allCarts = new ArrayList<Cart>();
 	}
 
 	public static ItemManager getInstance() {
 		return instance;
-	}
-
-	public void setAllCarts(Cart cart) {
-		if (cart == null)
-			return;
-		allCarts.add(cart);
-	}
-
-	public void deleteCartByUserId(String id) {
-		if (id == null)
-			return;
-
-		for (Cart cart : allCarts) {
-			if (cart.getMyId().equals(id)) {
-				allCarts.remove(cart);
-				return;
-			}
-		}
 	}
 
 	// enroll item
@@ -145,15 +125,6 @@ public class ItemManager {
 			if (i < items.size() - 1)
 				data += ",";
 		}
-
-//		for (int i = 0; i < allCarts.size(); i++) {
-//			Cart cart = allCarts.get(i);
-//			if (i == 0 && cart.getCartSize() > 0)
-//				data += "\n";
-//			data += cart.makeData();
-//			if (cart.getCartSize() > 0 && i < allCarts.size() - 1)
-//				data += "\n";
-//		}
 
 		return data;
 	}
