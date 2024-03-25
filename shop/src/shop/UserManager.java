@@ -15,10 +15,11 @@ public class UserManager {
 	private static UserManager instance = new UserManager();
 
 	private UserManager() {
-		users = new ArrayList<User>();
-		User admin = new User("admin", "1111");
-		users.add(admin);
-
+		if (users == null) {
+			users = new ArrayList<User>();
+			User admin = new User("admin", "1111");
+			users.add(admin);
+		}
 	}
 
 	public static UserManager getInstance() {
